@@ -1,0 +1,15 @@
+{
+  "name": "mini-moteur-reco",
+  "version": "1.0.0",
+  "description": "Mini moteur de recommandation de films basé sur l'API TMDB — projet de comparaison d'outils IA",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sass": "sass src/scss/main.scss src/css/main.css --no-source-map --style=expanded",
+    "sass:watch": "sass --watch src/scss/main.scss src/css/main.css --no-source-map --style=expanded",
+    "start": "npx --yes serve . -l 5173"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

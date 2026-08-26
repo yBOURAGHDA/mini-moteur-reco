@@ -1,0 +1,23 @@
+# Clé API TMDB — ne doit JAMAIS être commitée
+src/js/config.js
+
+# Dépendances
+node_modules/
+
+# Artefacts de compilation SASS
+src/css/*.map
+.sass-cache/
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Journaux
+*.log
+npm-debug.log*
