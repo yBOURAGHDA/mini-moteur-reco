@@ -87,6 +87,31 @@
   color: $color-text-muted;
 }
 
+/* ------------------------------------------------- Panneau de filtres (1) */
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: $space-md;
+  align-items: end;
+
+  &__title {
+    font-size: 1.05rem;
+    margin-bottom: $space-md;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-sm;
+  }
+
+  &__summary {
+    margin: $space-md 0 0;
+    font-size: 0.85rem;
+    color: $color-text-muted;
+  }
+}
+
 /* ------------------------------------------------------------ Carte film */
 
 .card {

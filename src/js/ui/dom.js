@@ -35,12 +35,14 @@ export function loadingState(message = 'Chargement des films…') {
  * Bloc "aucun résultat".
  * @param {string} title
  * @param {string} [text]
+ * @param {string} [actionHtml] bouton ou lien optionnel, déjà en HTML
  */
-export function emptyState(title, text = '') {
+export function emptyState(title, text = '', actionHtml = '') {
   return `
     <div class="state state--empty">
       <h2 class="state__title">${escapeHtml(title)}</h2>
       ${text ? `<p class="state__text">${escapeHtml(text)}</p>` : ''}
+      ${actionHtml}
     </div>`;
 }
 
