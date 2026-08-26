@@ -1,9 +1,8 @@
 /**
  * Vue "Découvrir" — page d'accueil.
  *
- * Rôle en phase 1 : charger des films depuis TMDB et les afficher.
- * Le tri est celui de l'API (popularité décroissante) tant que la
- * fonctionnalité 2 (scoring) n'est pas développée.
+ * Charge les films depuis TMDB, les filtre (fonctionnalité 1) et les classe
+ * par score de recommandation (fonctionnalité 2).
  *
  * Points d'accroche prévus pour la phase 2 :
  *   #filters-slot  -> fonctionnalité 1 (filtrage multi-critères)
@@ -14,6 +13,7 @@
 
 import { discoverMovies, TmdbError } from '../api/tmdb.js';
 import { getState, resetFilters, setState, subscribe } from '../core/store.js';
+import { rankMovies } from '../core/scoring.js';
 import { hasActiveFilters, mountFilters } from '../ui/filters.js';
 import { movieGrid } from '../ui/movieCard.js';
 import { emptyState, errorState, loadingState } from '../ui/dom.js';
@@ -136,7 +136,12 @@ export async function homeView(_params, container) {
       return;
     }
 
-    results.innerHTML = movieGrid(state.movies);
+    // Fonctionnalité 2 : les films sont classés par score, pas par l'ordre
+    // renvoyé par TMDB. Le calcul vit dans core/scoring.js — une vue ne porte
+    // pas de logique métier.
+    const scoredMovies = rankMovies(state.movies, state.weights);
+
+    results.innerHTML = movieGrid(scoredMovies, (movie) => ({ score: movie.score }));
 
     pagination.hidden = false;
     pageInfo.textContent = `Page ${state.page} sur ${state.totalPages}`;
