@@ -38,17 +38,25 @@ Deux façons de la fournir, au choix :
 
 ### 3. Lancer l'application
 
-Le projet utilise les modules ES : il doit être servi par un serveur HTTP,
-un double-clic sur `index.html` ne fonctionnera pas.
+Le projet utilise les modules ES : il doit être servi par un serveur HTTP.
+**Un double-clic sur `index.html` ne fonctionnera pas** (le navigateur bloque
+les imports de modules sur `file://`).
+
+Au choix, dans l'ordre du plus simple :
 
 ```bash
+# 1. Avec VS Code : extension "Live Server", clic droit sur index.html
+#    -> "Open with Live Server"
+
+# 2. Avec Node
+npm start
+
+# 3. Avec Python (attention : sous Windows, `python` peut n'être qu'un
+#    raccourci Microsoft Store non fonctionnel — vérifiez avec `python -V`)
 python -m http.server 5173
 ```
 
 Puis ouvrez <http://localhost:5173>.
-
-Autres options équivalentes : l'extension **Live Server** de VS Code, ou
-`npm start` si Node est installé.
 
 ### 4. Modifier les styles (SASS)
 

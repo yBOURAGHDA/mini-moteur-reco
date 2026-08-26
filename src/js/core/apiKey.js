@@ -2,8 +2,13 @@
  * Gestion de la clé API TMDB.
  *
  * Deux sources possibles, dans cet ordre :
- *   1. `src/js/config.js` (fichier local, ignoré par git)
- *   2. le localStorage du navigateur, alimenté par la boîte de dialogue "Clé API"
+ *   1. le localStorage du navigateur, alimenté par la boîte de dialogue "Clé API"
+ *   2. `src/js/config.js` (fichier local optionnel, ignoré par git)
+ *
+ * Le localStorage est consulté en premier : une clé saisie dans l'interface
+ * est un geste explicite de l'utilisateur, elle doit primer sur le fichier.
+ * Cet ordre évite aussi de chercher `config.js` à chaque chargement, ce qui
+ * produisait un 404 inutile dans la console.
  *
  * Aucune clé n'est jamais écrite en dur dans un fichier commité.
  */
@@ -34,17 +39,18 @@ async function loadFromConfigFile() {
 export async function getApiKey() {
   if (cachedKey) return cachedKey;
 
-  if (!configLoaded) {
-    configLoaded = true;
-    const fromFile = await loadFromConfigFile();
-    if (fromFile) {
-      cachedKey = fromFile;
-      return cachedKey;
-    }
+  const fromStorage = readStorage();
+  if (fromStorage) {
+    cachedKey = fromStorage;
+    return cachedKey;
   }
 
-  cachedKey = readStorage();
-  return cachedKey;
+  if (!configLoaded) {
+    configLoaded = true;
+    cachedKey = await loadFromConfigFile();
+  }
+
+  return cachedKey || '';
 }
 
 /**
