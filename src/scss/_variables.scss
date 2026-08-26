@@ -1,0 +1,32 @@
+// Variables de design — un seul endroit pour changer l'identité visuelle.
+
+// Couleurs
+$color-bg:            #0f1115;
+$color-surface:       #171a21;
+$color-surface-alt:   #1e222b;
+$color-border:        #2a2f3a;
+$color-text:          #e8eaf0;
+$color-text-muted:    #9aa3b2;
+$color-primary:       #f5a524;
+$color-primary-dark:  #c8851a;
+$color-danger:        #ef4444;
+$color-success:       #22c55e;
+
+// Rayons
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+
+// Espacements
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  40px;
+
+// Typographie
+$font-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// Points de rupture
+$bp-sm: 640px;
+$bp-md: 900px;

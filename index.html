@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineScore — Mini moteur de recommandation</title>
+  <link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#/">
+        <span class="brand__mark">◈</span>
+        <span class="brand__name">CineScore</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a class="nav__link" href="#/" data-route="/">Découvrir</a>
+        <a class="nav__link" href="#/favorites" data-route="/favorites">Mes recommandations</a>
+        <a class="nav__link" href="#/compare" data-route="/compare">Comparateur</a>
+        <a class="nav__link" href="#/stats" data-route="/stats">Statistiques</a>
+      </nav>
+
+      <button class="btn btn--ghost btn--sm" id="btn-settings" type="button">Clé API</button>
+    </div>
+  </header>
+
+  <main class="main" id="app">
+    <!-- Les vues sont injectées ici par le routeur -->
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Données fournies par <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a>.
+      Ce produit utilise l'API TMDB mais n'est ni approuvé ni certifié par TMDB.</p>
+    </div>
+  </footer>
+
+  <!-- Boîte de dialogue de saisie de la clé API -->
+  <dialog class="dialog" id="api-key-dialog">
+    <form method="dialog" class="dialog__form" id="api-key-form">
+      <h2 class="dialog__title">Clé API TMDB</h2>
+      <p class="dialog__text">
+        Créez un compte sur
+        <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org</a>
+        puis collez votre clé ici. Elle est stockée uniquement dans votre navigateur
+        (<code>localStorage</code>) et n'est jamais commitée.
+      </p>
+      <label class="field">
+        <span class="field__label">Clé API (v3 auth)</span>
+        <input class="field__input" type="text" id="api-key-input" name="apiKey"
+               placeholder="ex : 8f3c1a2b4d5e6f7a8b9c0d1e2f3a4b5c" autocomplete="off" required>
+      </label>
+      <p class="dialog__error" id="api-key-error" hidden></p>
+      <div class="dialog__actions">
+        <button class="btn btn--ghost" type="button" id="api-key-cancel">Annuler</button>
+        <button class="btn btn--primary" type="submit">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

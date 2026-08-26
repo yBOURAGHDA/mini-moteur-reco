@@ -1,0 +1,11 @@
+// Feuille de style principale.
+// Compilation : npm run sass  (ou npm run sass:watch pendant le développement)
+//
+// Le CSS compilé (src/css/main.css) est commité volontairement, pour que le
+// projet reste lançable sans installer Node. Recompilez après chaque
+// modification d'un fichier .scss, et commitez les deux.
+
+@use "variables";
+@use "base";
+@use "layout";
+@use "components";
